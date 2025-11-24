@@ -20,7 +20,7 @@ body {
   background-color: var(--bg);
   color: var(--text);
 
-  background-image: url("assets/hintergrund%20test.jpg");
+  background-image: url("assets/hintergrund%20test2.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -46,7 +46,7 @@ main {
   --bg: #ffffff;
   --bg-alt: #f7f7f8;
   --text: #0c0c0d;
-  --muted: #5a5a66;
+  --muted: #2f2f32;
   --card: #ffffff;
   --border: #e6e6eb;
   --brand: #d4a047; /* Gold */
@@ -96,11 +96,12 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.3); /* 20 % Deckkraft */
   backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
   padding: 14px 14px 14px; 
 }
+
 
 /* Innerer Header-Container: Brand + Nav übereinander, zentriert */
 .header-inner {
@@ -310,7 +311,7 @@ h2 {
 }
 
 .section {
-  padding: 40px 0;
+  padding: 20px 0;
 }
 
 /* global zentriert für Sections (Inhalt) */
@@ -390,6 +391,11 @@ h2 {
   height: 220px;
 }
 
+.hero-objekte .hero-inner {
+  padding-top: 0px;
+}
+
+
 /* ----- Benefits-Liste (Der erste Eindruck entscheidet) ----- */
 
 .benefits {
@@ -420,7 +426,7 @@ h2 {
 .card {
   padding: 24px;
   border-radius: 14px;
-  border: 1px solid #e5e5e5;
+  border: 1px solid rgba(255, 255, 255, 0.8);
   background: #ffffff;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -505,7 +511,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  text-align: left;
+  text-align: center;
 }
 
 .price-card:hover {
@@ -528,11 +534,12 @@ h2 {
 .price::after {
   content: "";
   display: block;
-  width: 32px;
+  width: 175px;
   height: 2px;
   border-radius: 999px;
   background: var(--brand);
   margin-top: 8px;
+  margin: 8px auto 0;
 }
 
 /* Icon-Bullets in Preis-Karten */
@@ -547,19 +554,18 @@ h2 {
 }
 
 .price-card ul li {
-  position: relative;
-  padding-left: 22px;
-  font-size: 0.95rem;
+  display: flex;
+  align-items: center; /* vertikal zentriert */
+  gap: 8px;
 }
 
 .price-card ul li::before {
   content: "●";
-  position: absolute;
-  left: 0;
-  top: 0.4em;
-  transform: translateY(-50%);
   font-size: 0.6rem;
   color: var(--brand);
+  position: static; /* entfernt absolute Positionierung */
+  top: 0.5em; /* oder einfach top: 0; */
+  transform: none;
 }
 
 /* Populäres Paket hervorheben */
@@ -569,7 +575,14 @@ h2 {
   background: linear-gradient(135deg, #fffaf0 0%, #f5ebd6 100%);
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
   transform: translateY(-2px);
+
+  /* 👇 Neu: sorgt für zentrierten Inhalt */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
+
 
 .price-card.popular::before {
   content: "sehr beliebt";
@@ -584,6 +597,7 @@ h2 {
   background: var(--brand);
   color: #000;
 }
+
 
 /* ----- Generisches Grid (Objekte-Seite) ----- */
 
@@ -668,8 +682,8 @@ h2 {
 
 .about {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 20px;
+  grid-template-columns: 250px 1fr;
+  gap: 50px;
   align-items: start;
   text-align: left;
 }
@@ -678,8 +692,10 @@ h2 {
   width: 100%;
   height: auto;
   border-radius: 12px;
-  border: 1px solid var(--border);
-  background: #0b0b0c;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 @media (max-width: 680px) {
@@ -693,8 +709,16 @@ h2 {
 .site-footer {
   padding: 40px 0;
   background: #fafafa;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(255, 255, 255, 0.8);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.3); /* gleiche Transparenz wie Header */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Safari-Support */
 }
+
 
 .footer-inner {
   display: flex;
@@ -705,11 +729,40 @@ h2 {
   color: var(--muted);
 }
 
-header,
+.chip {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.3);
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition: all 0.2s ease;
+}
+
+.chip:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.chip.active {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #000;
+}
+
+.hero-objekte {
+  padding-top: 8px;      /* statt 40px von .section */
+  padding-bottom: 0px;  /* kannst du nach Gefühl anpassen */
+}
+
+/* Innenraum im Hero verkleinern */
+.hero-objekte .hero-inner {
+  padding: 0px 0px 0px;  /* statt 80px 20px 60px */
+}
+
 footer,
 .section,
 .section.alt,
 main {
   background: transparent !important;
 }
-

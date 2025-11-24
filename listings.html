@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Preise – Mind Frame Motions</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Objekte – Mind Frame Motions</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -24,57 +25,206 @@
   </div>
 </header>
 
+<main>
+  <!-- Hero-Bereich Objekte -->
+  <section class="section">
+    <div class="container">
+      <div class="hero-inner" style="padding: 56px 20px 32px;">
+        <h1>Wenn du die Qualität zeigen willst, die du verkaufst.</h1>
+        <p>Ausgewählte Immobilienvideos für Makler, die ihren Anspruch sichtbar machen und nicht mit 08/15-Marketing auftreten wollen.</p>
+        <p class="muted">Kurzformate für Instagram & Co. – produziert im Landkreis Lörrach und Umgebung.</p>
+        
+<section class="section hero-objekte">
+  <div class="hero-inner">
+  </div>
+</section>
 
+  <!-- Filter + Objekte -->
+  <section class="section">
+    <div class="container">
+      <h2>Ausgewählte Objekte</h2>
+      <p class="muted">Filtere nach Format oder schau dir einfach durch, wie unterschiedliche Objekte inszeniert werden.</p>
 
-  <main class="section container">
-    <h1>Objekte</h1>
-    <p class="muted">Ausgewählte Objekte, für die ich Videos produziert habe. YouTube‑IDs ersetzen.</p>
-    <div class="grid">
-      <div class="video">
-        <div class="video-wrapper">
-          <iframe title="Showreel"
-            src="https://www.youtube-nocookie.com/embed/VIDEO_ID_SHOWREEL"
-            loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        </div>
-        <p class="caption">Showreel</p>
+      <!-- Filter-Chips -->
+      <div class="filter-bar" style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+        <button class="chip active" data-filter="all">Alle</button>
+        <button class="chip" data-filter="hochkant">Hochkant (9:16)</button>
+        <button class="chip" data-filter="querformat">Querformat (16:9)</button>
+        <button class="chip" data-filter="showreel">Showreel</button>
       </div>
 
-      <div class="video">
-        <div class="video-wrapper">
-          <iframe title="Penthouse in Musterstadt"
-            src="https://www.youtube-nocookie.com/embed/VIDEO_ID_1"
-            loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        </div>
-        <p class="caption">Penthouse • Musterstraße 1, Musterstadt</p>
-      </div>
+      <!-- Objekt-Gitter -->
+      <div class="cards objects-grid" style="margin-top: 24px;">
+        <!-- Showreel -->
+        <article class="card object-card" data-format="showreel hochkant">
+          <span class="badge">Showreel</span>
+          <div class="video-wrapper">
+            <iframe title="Showreel"
+              src="https://www.youtube-nocookie.com/embed/VIDEO_ID_SHOWREEL"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <h3>Showreel – Mind Frame Motions</h3>
+          <ul class="ticks">
+            <li>Mix aus Hochkant- und Querformat-Clips</li>
+            <li>Best-of aus verschiedenen Objekten</li>
+            <li>Fokus: Emotion, Atmosphäre und Dynamik</li>
+          </ul>
+          <div class="cta" style="margin-top: 14px;">
+            <a href="https://www.instagram.com/" class="btn ghost" target="_blank" rel="noreferrer">
+              Auf Instagram ansehen
+            </a>
+          </div>
+        </article>
 
-      <div class="video">
-        <div class="video-wrapper">
-          <iframe title="Altbau Innenstadt"
-            src="https://www.youtube-nocookie.com/embed/VIDEO_ID_2"
-            loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        </div>
-        <p class="caption">Altbau • Innenstadt</p>
-      </div>
+        <!-- Objekt 1 – Hochkant -->
+        <article class="card object-card" data-format="hochkant">
+          <span class="badge">Hochkant</span>
+          <div class="video-wrapper">
+            <iframe title="Penthouse in Musterstadt"
+              src="https://www.youtube-nocookie.com/embed/VIDEO_ID_1"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <h3>Penthouse in Musterstadt</h3>
+          <ul class="ticks">
+            <li>Reel-Format (9:16), ca. 45 Sekunden</li>
+            <li>Fokus: Weitblick, Licht & Großzügigkeit</li>
+            <li>Ideal für Instagram & Stories</li>
+          </ul>
+          <div class="cta" style="margin-top: 14px;">
+            <a href="https://www.instagram.com/" class="btn ghost" target="_blank" rel="noreferrer">
+              Reel auf Instagram
+            </a>
+          </div>
+        </article>
 
-      <div class="video">
-        <div class="video-wrapper">
-          <iframe title="Neubau am Park"
-            src="https://www.youtube-nocookie.com/embed/VIDEO_ID_3"
-            loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        </div>
-        <p class="caption">Neubau • Am Park</p>
+        <!-- Objekt 2 – Querformat -->
+        <article class="card object-card" data-format="querformat">
+          <span class="badge">Querformat</span>
+          <div class="video-wrapper">
+            <iframe title="Altbau Innenstadt"
+              src="https://www.youtube-nocookie.com/embed/VIDEO_ID_2"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <h3>Altbau in der Innenstadt</h3>
+          <ul class="ticks">
+            <li>Querformat (16:9), ca. 1:30 Minuten</li>
+            <li>Fokus: Details, Charme & Geschichte</li>
+            <li>Ideal für Exposé & Website</li>
+          </ul>
+          <div class="cta" style="margin-top: 14px;">
+            <a href="https://www.instagram.com/" class="btn ghost" target="_blank" rel="noreferrer">
+              Video ansehen
+            </a>
+          </div>
+        </article>
+
+        <!-- Objekt 3 – Hochkant -->
+        <article class="card object-card" data-format="hochkant">
+          <span class="badge">Hochkant</span>
+          <div class="video-wrapper">
+            <iframe title="Neubau am Park"
+              src="https://www.youtube-nocookie.com/embed/VIDEO_ID_3"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <h3>Neubau am Park</h3>
+          <ul class="ticks">
+            <li>Reel-Format (9:16), ca. 30–40 Sekunden</li>
+            <li>Fokus: Lage, Ruhe & moderne Architektur</li>
+            <li>Für Social Media & Anzeigen optimiert</li>
+          </ul>
+          <div class="cta" style="margin-top: 14px;">
+            <a href="https://www.instagram.com/" class="btn ghost" target="_blank" rel="noreferrer">
+              Reel auf Instagram
+            </a>
+          </div>
+        </article>
+
+        <!-- Objekt 4 – Querformat -->
+        <article class="card object-card" data-format="querformat">
+          <span class="badge">Querformat</span>
+          <div class="video-wrapper">
+            <iframe title="Einfamilienhaus im Grünen"
+              src="https://www.youtube-nocookie.com/embed/VIDEO_ID_4"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+          <h3>Einfamilienhaus im Grünen</h3>
+          <ul class="ticks">
+            <li>Querformat (16:9), ca. 2 Minuten</li>
+            <li>Fokus: Garten, Licht & Familiengefühl</li>
+            <li>Ideal für Präsentationen & Exposé</li>
+          </ul>
+          <div class="cta" style="margin-top: 14px;">
+            <a href="https://www.instagram.com/" class="btn ghost" target="_blank" rel="noreferrer">
+              Video ansehen
+            </a>
+          </div>
+        </article>
       </div>
     </div>
-  </main>
-  <footer class="site-footer"><div class="container footer-inner">
+  </section>
+
+  <!-- Abschluss-CTA -->
+  <section class="section">
+    <div class="container">
+      <h2>Dein Objekt als nächstes?</h2>
+      <p class="muted">Schick mir kurz ein paar Infos zu deinem Objekt – ich sag dir ehrlich, ob ein Video Sinn macht und welches Format dazu passt.</p>
+      <div class="cta">
+        <a href="mailto:maik@mindframemotions.com?subject=Anfrage%20Immobilienvideo" class="btn">
+          Anfrage per E-Mail
+        </a>
+        <a href="preise.html" class="btn ghost">
+          Zu den Paketen & Preisen
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
     <p>© <span id="year"></span> Mind Frame Motions</p>
     <p><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
-  </div></footer>
-  <script src="script.js" defer></script>
+  </div>
+</footer>
+
+<script src="script.js" defer></script>
+
+<!-- Kleines interaktives Filter-Script -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const chips = document.querySelectorAll(".chip");
+    const cards = document.querySelectorAll(".object-card");
+
+    chips.forEach(chip => {
+      chip.addEventListener("click", () => {
+        const filter = chip.dataset.filter;
+
+        // aktive Chip-Klasse setzen
+        chips.forEach(c => c.classList.remove("active"));
+        chip.classList.add("active");
+
+        // Karten filtern
+        cards.forEach(card => {
+          const formats = card.dataset.format.split(" ");
+          if (filter === "all" || formats.includes(filter)) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  });
+</script>
 </body>
 </html>
