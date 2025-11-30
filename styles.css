@@ -10,7 +10,7 @@
 
 html,
 body {
-  min-height: 100%;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
 }
@@ -527,7 +527,6 @@ h2 {
   position: relative;
   padding: 40px 18px 22px;
   border-radius: 16px;
-  border: 1px solid #e2e2e5;
   background: linear-gradient(135deg, #ffffff 0%, #f9f7f2 100%);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
@@ -596,7 +595,7 @@ h2 {
 
 .price-card.popular {
   position: relative;
-  border-color: var(--brand);
+  border: 1.5px solid var(--brand);
   background: linear-gradient(135deg, #fffaf0 0%, #f8efdc 100%);
   box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
   transform: translateY(-3px);

@@ -63,7 +63,7 @@
           <div class="form-row checkbox-row">
             <label>
               <input type="checkbox" id="toggle-details" />
-              Ich möchte direkt Details zur Immobilie angeben (empfohlen)
+              Ich möchte direkt Details zur Immobilie angeben
             </label>
           </div>
 
@@ -124,15 +124,6 @@
               Nachricht senden
             </button>
           </div>
-
-          <!-- eigene Dankesnachricht -->
-          <div
-            id="success-message"
-            style="display: none; text-align: center; margin-top: 2rem;"
-          >
-            <h2>Vielen Dank!</h2>
-            <p>Deine Nachricht wurde erfolgreich gesendet.</p>
-          </div>
         </form>
       </div>
     </section>
@@ -175,9 +166,6 @@
 
   <script>
     const form = document.getElementById("contact-form");
-    const successMessage = document.getElementById("success-message");
-    const contactTitle = document.getElementById("contact-title");
-    const contactIntro = document.getElementById("contact-intro");
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault(); // verhindert Seitenwechsel
@@ -191,13 +179,8 @@
       });
 
       if (response.ok) {
-        // Formular + Überschrift + Intro ausblenden
-        form.style.display = "none";
-        contactTitle.style.display = "none";
-        contactIntro.style.display = "none";
-
-        // Danke-Message anzeigen
-        successMessage.style.display = "block";
+        // Weiterleitung auf Danke-Seite
+        window.location.href = "danke.html";
       } else {
         alert("Etwas ist schiefgelaufen. Bitte versuch es später erneut.");
       }
