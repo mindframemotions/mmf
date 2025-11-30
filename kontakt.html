@@ -1,219 +1,214 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kontakt – Mind Frame Motions</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="index.html">Mind Frame Motions</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Mind Frame Motions</a>
 
-    <button class="menu-btn" aria-expanded="false" aria-controls="nav">
-      Menü
-    </button>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav">
+        Menü
+      </button>
 
-    <nav id="nav" class="nav">
-      <a href="index.html">Startseite</a>
-      <a href="listings.html">Objekte</a>
-      <a href="preise.html">Preise</a>
-      <a href="ueber-mich.html">Über mich</a>
-      <a class="active" href="Kontakt.html">Kontakt</a>
-    </nav>
-  </div>
-</header>
+      <nav id="nav" class="nav" aria-label="Hauptnavigation">
+        <a href="index.html">Startseite</a>
+        <a href="listings.html">Objekte</a>
+        <a href="preise.html">Preise</a>
+        <a href="ueber-mich.html">Über mich</a>
+        <a class="active" href="kontakt.html">Kontakt</a>
+      </nav>
+    </div>
+  </header>
 
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2 id="contact-title">Kontakt</h2>
+        <p class="muted" id="contact-intro">
+          Schick mir eine Anfrage – optional kannst du direkt ein paar Details zur Immobilie mit angeben.
+        </p>
 
-<section class="section">
-  <div class="container">
-    <h2 id="contact-title">Kontakt</h2>
-    <p class="muted" id="contact-intro">
-      Schick mir eine Anfrage – optional kannst du direkt ein paar Details zur Immobilie mit angeben.
-    </p>
+        <form
+          class="contact-form"
+          id="contact-form"
+          action="https://formspree.io/f/mrbvpyzy"
+          method="POST"
+        >
+          <div class="form-row">
+            <label for="name">Name*</label>
+            <input type="text" id="name" name="name" required />
+          </div>
 
-    <form class="contact-form" id="contact-form" action="https://formspree.io/f/mrbvpyzy" method="POST">
-      <div class="form-row">
-        <label for="name">Name*</label>
-        <input type="text" id="name" name="name" required>
+          <div class="form-row">
+            <label for="email">E-Mail*</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-row">
+            <label for="message">Nachricht</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Kurze Info zu deinem Anliegen…"
+            ></textarea>
+          </div>
+
+          <!-- Toggle für Fragebogen -->
+          <div class="form-row checkbox-row">
+            <label>
+              <input type="checkbox" id="toggle-details" />
+              Ich möchte direkt Details zur Immobilie angeben (empfohlen)
+            </label>
+          </div>
+
+          <!-- Ausklappbarer Fragebogen -->
+          <div class="questionnaire" id="questionnaire">
+            <h2>Details zur Immobilie</h2>
+
+            <div class="form-row">
+              <label for="standort">Standort der Immobilie*</label>
+              <input type="text" id="standort" name="Standort" />
+            </div>
+
+            <div class="form-row">
+              <label for="objekt-art">Art der Immobilie</label>
+              <select id="objekt-art" name="Objektart">
+                <option value="">Bitte auswählen…</option>
+                <option value="Wohnung">Wohnung</option>
+                <option value="Haus">Haus</option>
+                <option value="Gewerbe">Gewerbeobjekt</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="maklerrolle">Makler im Video?</label>
+              <select id="maklerrolle" name="Maklerrolle">
+                <option value="">Bitte auswählen…</option>
+                <option value="Noch unsicher">Noch unsicher</option>
+                <option value="Nein">Nein</option>
+                <option value="kurze Szene">Ja, kurze Szene im Video</option>
+                <option value="Sprechrolle">Ja, kurze Sprechrolle</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <label for="besonderheiten">Highlights / Besonderheiten</label>
+              <textarea
+                id="besonderheiten"
+                name="Besonderheiten"
+                rows="3"
+                placeholder="z.B. Balkon mit Aussicht, neue Küche, Kamin…"
+              ></textarea>
+            </div>
+          </div> <!-- Fragebogen -->
+
+          <div class="form-row form-row--privacy">
+            <p class="privacy-note muted">
+              Deine Angaben werden ausschließlich zur Bearbeitung deiner Anfrage verwendet und nicht an Dritte
+              weitergegeben.
+            </p>
+          </div>
+
+          <div class="form-row" style="text-align: center;">
+            <button
+              type="submit"
+              class="btn"
+              style="width: auto; font-size: .9rem; padding: 10px 30px; margin-bottom: -30px;"
+            >
+              Nachricht senden
+            </button>
+          </div>
+
+          <!-- eigene Dankesnachricht -->
+          <div
+            id="success-message"
+            style="display: none; text-align: center; margin-top: 2rem;"
+          >
+            <h2>Vielen Dank!</h2>
+            <p>Deine Nachricht wurde erfolgreich gesendet.</p>
+          </div>
+        </form>
       </div>
+    </section>
 
-      <div class="form-row">
-        <label for="email">E-Mail*</label>
-        <input type="email" id="email" name="email" required>
+    <section class="section contact-info">
+      <div class="container" style="text-align: center;">
+        <h2>Direkter Kontakt</h2>
+        <p class="muted">Du kannst mich auch direkt per E-Mail oder Telefon erreichen.</p>
+
+        <div class="contact-links" style="margin-top: 1.5rem;">
+          <!-- E-Mail-Link -->
+          <p>
+            📧
+            <a href="mailto:maik@mindframemotions.com" class="contact-link">
+              maik@mindframemotions.com
+            </a>
+          </p>
+
+          <!-- Telefon-Link -->
+          <p>
+            📞
+            <a href="tel:01726291378" class="contact-link">+49 172 6291378</a>
+          </p>
+        </div>
       </div>
+    </section>
+  </main>
 
-      <div class="form-row">
-        <label for="message">Nachricht</label>
-        <textarea id="message" name="message" rows="4"
-          placeholder="Kurze Info zu deinem Anliegen…"></textarea>
-      </div>
-
-  <!-- Toggle für Fragebogen -->
-  <div class="form-row checkbox-row">
-    <label>
-      <input type="checkbox" id="toggle-details">
-      Ich möchte direkt Details zur Immobilie angeben (empfohlen)
-    </label>
-  </div>
-
-  <!-- Ausklappbarer Fragebogen -->
-  <div class="questionnaire" id="questionnaire">
-    <h2>Details zur Immobilie</h2>
-
-    <div class="form-row">
-      <label for="standort">Standort der Immobilie*</label>
-      <input type="text" id="standort" name="Standort">
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Mind Frame Motions</p>
+      <p>
+        <a href="impressum.html">Impressum</a> ·
+        <a href="datenschutz.html">Datenschutz</a>
+      </p>
     </div>
+  </footer>
 
-    <div class="form-row">
-      <label for="objekt-art">Art der Immobilie</label>
-      <select id="objekt-art" name="Objektart">
-        <option value="">Bitte auswählen…</option>
-        <option value="Wohnung">Wohnung</option>
-        <option value="Haus">Haus</option>
-        <option value="Gewerbe">Gewerbeobjekt</option>
-      </select>
-    </div>
+  <script src="script.js" defer></script>
 
-    <div class="form-row">
-      <label for="zustand">Zustand / Möblierung</label>
-      <select id="zustand" name="Zustand">
-        <option value="">Bitte auswählen…</option>
-        <option value="leer">Leerstehend</option>
-        <option value="möbliert">Möbliert</option>
-        <option value="teilweise">Teilweise möbliert</option>
-        <option value="renovierungsbedürftig">Renovierungsbedürftig</option>
-      </select>
-    </div>
+  <script>
+    const form = document.getElementById("contact-form");
+    const successMessage = document.getElementById("success-message");
+    const contactTitle = document.getElementById("contact-title");
+    const contactIntro = document.getElementById("contact-intro");
 
-    <div class="form-row">
-      <label for="ziel">Ziel des Videos</label>
-      <select id="ziel" name="Ziel">
-        <option value="">Bitte auswählen…</option>
-        <option value="Social Media">Social Media (Instagram, TikTok, Reels)</option>
-        <option value="Exposé / Website">Exposé / Website</option>
-        <option value="Image / Branding">Image / Branding</option>
-      </select>
-    </div>
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault(); // verhindert Seitenwechsel
 
-    <div class="form-row">
-      <label for="maklerrolle">Makler im Video?</label>
-      <select id="maklerrolle" name="Maklerrolle">
-        <option value="Nein">Nein</option>
-        <option value="kurze Szene">Ja, kurze Szene im Video</option>
-        <option value="Sprechrolle">Ja, kurze Sprechrolle</option>
-      </select>
-    </div>
+      const formData = new FormData(form);
 
-    <div class="form-row">
-      <label for="besonderheiten">Highlights / Besonderheiten</label>
-      <textarea id="besonderheiten" name="Besonderheiten" rows="3"
-        placeholder="z.B. Balkon mit Aussicht, neue Küche, Kamin…"></textarea>
-    </div>
-  </div> <!-- 👈 WICHTIG: Fragebogen wird hier geschlossen -->
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: formData,
+        headers: { Accept: "application/json" },
+      });
 
-  <div class="form-row form-row--privacy">
-    <p class="privacy-note muted">
-      Deine Angaben werden ausschließlich zur Bearbeitung deiner Anfrage verwendet und nicht an Dritte weitergegeben.
-    </p>
-  </div>
+      if (response.ok) {
+        // Formular + Überschrift + Intro ausblenden
+        form.style.display = "none";
+        contactTitle.style.display = "none";
+        contactIntro.style.display = "none";
 
-<div class="form-row" style="text-align: center;">
-  <button
-    type="submit"
-    class="btn"
-    style="width: auto; font-size: .9rem; padding: 10px 30px; margin-bottom: -30px;" 
-  >
-    Nachricht senden
-  </button>
-</div>
-
-    <!-- eigene Dankesnachricht -->
-    <div id="success-message" style="display:none; text-align:center; margin-top: 2rem;">
-      <h2>Vielen Dank!</h2>
-      <p>Deine Nachricht wurde erfolgreich gesendet.</p>
-    </div>
-  </div>
-</section>
-
-
-
-<script>
-  const form = document.getElementById('contact-form');
-  const successMessage = document.getElementById('success-message');
-  const contactTitle = document.getElementById('contact-title');
-  const contactIntro = document.getElementById('contact-intro');
-
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault(); // verhindert Seitenwechsel
-
-    const formData = new FormData(form);
-
-    const response = await fetch(form.action, {
-      method: form.method,
-      body: formData,
-      headers: { 'Accept': 'application/json' }
+        // Danke-Message anzeigen
+        successMessage.style.display = "block";
+      } else {
+        alert("Etwas ist schiefgelaufen. Bitte versuch es später erneut.");
+      }
     });
 
-    if (response.ok) {
-      // Formular + Überschrift + Intro ausblenden
-      form.style.display = 'none';
-      contactTitle.style.display = 'none';
-      contactIntro.style.display = 'none';
+    const toggleDetails = document.getElementById("toggle-details");
+    const questionnaire = document.getElementById("questionnaire");
 
-      // Danke-Message anzeigen
-      successMessage.style.display = 'block';
-    } else {
-      alert('Etwas ist schiefgelaufen. Bitte versuch es später erneut.');
-    }
-  });
-</script>
-
-<section class="section contact-info">
-  <div class="container" style="text-align:center;">
-    <h2>Direkter Kontakt</h2>
-    <p class="muted">Du kannst mich auch direkt per E-Mail oder WhatsApp erreichen.</p>
-
-    <div class="contact-links" style="margin-top:1.5rem;">
-      <!-- E-Mail-Link -->
-      <p>
-        📧 <a href="maik@mindframemotion.com" class="contact-link">maik@mindframemotion.com</a>
-      </p>
-
-      <!-- WhatsApp-Link -->
-      <p>
-        💬 <a href="https://wa.me/+491726291378" class="contact-link" target="_blank" rel="noopener">
-          Schreib mir auf WhatsApp
-        </a>
-      </p>
-
-      <!-- Telefon-Link -->
-      <p>
-        📞 <a href="tel:01726291378" class="contact-link">+491726291378</a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<footer class="site-footer"><div class="container footer-inner">
-  <p>© <span id="year"></span> Mind Frame Motions</p>
-  <p><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
-</div></footer>
-<script src="script.js" defer></script>
-
-
-<script>
-  const toggleDetails = document.getElementById('toggle-details');
-  const questionnaire = document.getElementById('questionnaire');
-
-  toggleDetails.addEventListener('change', () => {
-    questionnaire.style.display = toggleDetails.checked ? 'block' : 'none';
-  });
-</script>
-
+    toggleDetails.addEventListener("change", () => {
+      questionnaire.style.display = toggleDetails.checked ? "block" : "none";
+    });
+  </script>
 </body>
 </html>
-
-

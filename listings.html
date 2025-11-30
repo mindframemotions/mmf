@@ -1,263 +1,142 @@
 <!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Objekte – Mind Frame Motions</title>
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Spezielle Layout-Anpassungen nur für diese Seite -->
-  <style>
-    /* Grid der Objekt-Cards: Flexbox mit fester Card-Breite */
-    .objects-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    /* Jede Card behält die gleiche Breite wie bei drei nebeneinander */
-    .object-card {
-      flex: 0 0 320px;         /* fixe Basis-Breite pro Card */
-      display: flex;
-      flex-direction: column;  /* für "Button immer unten" */
-    }
-
-    /* Auf sehr kleinen Screens darf die Card die volle Breite nutzen */
-    @media (max-width: 560px) {
-      .object-card {
-        flex: 0 0 100%;
-      }
-    }
-
-    /* CTA unten immer an den Card-Boden drücken & zentrieren */
-    .object-card .cta-bottom {
-      margin-top: auto;        /* schiebt den Block nach unten */
-      padding-top: 16px;       /* Abstand zum restlichen Inhalt */
-      display: flex;
-      justify-content: center;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="index.html">Mind Frame Motions</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">Mind Frame Motions</a>
 
-    <button class="menu-btn" aria-expanded="false" aria-controls="nav">
-      Menü
-    </button>
+      <button class="menu-btn" aria-expanded="false" aria-controls="nav">
+        Menü
+      </button>
 
-    <nav id="nav" class="nav">
-      <a href="index.html">Startseite</a>
-      <a class="active" href="listings.html">Objekte</a>
-      <a href="preise.html">Preise</a>
-      <a href="ueber-mich.html">Über mich</a>
-      <a href="kontakt.html">Kontakt</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-  <section class="section">
-    <div class="container">
-      <h2>Ausgewählte Objekte</h2>
-      <p class="muted">Filtere nach Status oder Format – Mehrfachauswahl möglich.</p>
-
-      <!-- Filter-Chips -->
-      <div class="filter-bar" style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-        <button class="chip active" data-filter="alle">Alle</button>
-        <button class="chip" data-filter="gelistet">Gelistet</button>
-        <button class="chip" data-filter="verkauft">Verkauft</button>
-        <button class="chip" data-filter="social">Social Media</button>
-        <button class="chip" data-filter="showcase">Showcase</button>
-      </div>
-
-      <!-- Objekt-Cards -->
-      <div class="objects-grid">
-        <!-- Showcase -->
-        <article class="card object-card" data-format="showcase social gelistet">
-          <span class="badge">Showcase</span>
-          <div class="video-wrapper">
-            <iframe title="Showcase"
-              src="https://www.youtube-nocookie.com/embed/VIDEO_ID_SHOWCASE"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-          </div>
-          <h3>Showcase – Mind Frame Motions</h3>
-          <ul class="ticks">
-            <li>Mix aus Social Media Clips</li>
-            <li>Best-of aus verschiedenen Objekten</li>
-            <li>Fokus: Emotion, Atmosphäre und Dynamik</li>
-          </ul>
-          <div class="cta cta-bottom">
-            <a href="https://www.instagram.com/" class="btn ghost" target="_blank" rel="noreferrer">
-              Auf Instagram ansehen
-            </a>
-          </div>
-        </article>
-
-        <!-- Objekt 1 – Social Media, gelistet -->
-        <article class="card object-card" data-format="social gelistet">
-          <span class="badge">Social Media · Gelistet</span>
-          <div class="video-wrapper">
-            <iframe title="Penthouse in Musterstadt"
-              src="https://www.youtube-nocookie.com/embed/VIDEO_ID_1"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-          </div>
-          <h3>Penthouse in Musterstadt</h3>
-          <ul class="ticks">
-            <li>Social Media Format (9:16), ca. 45 Sekunden</li>
-            <li>Fokus: Weitblick, Licht & Großzügigkeit</li>
-            <li>Ideal für Instagram & Stories</li>
-          </ul>
-          <div class="cta cta-bottom">
-            <a href="https://www.instagram.com/" class="btn ghost" target="_blank" rel="noreferrer">
-              Auf Instagram ansehen
-            </a>
-          </div>
-        </article>
-
-        <!-- Objekt 2 – Social Media, verkauft -->
-        <article class="card object-card" data-format="social verkauft">
-          <span class="badge">Social Media · Verkauft</span>
-          <div class="video-wrapper">
-            <iframe title="Loftwohnung Innenstadt"
-              src="https://www.youtube-nocookie.com/embed/VIDEO_ID_2"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-          </div>
-          <h3>Loftwohnung in der Innenstadt</h3>
-          <ul class="ticks">
-            <li>Social Media (9:16), ca. 40 Sekunden</li>
-            <li>Fokus: Charme, Lage & Stil</li>
-            <li>Bereits verkauft</li>
-          </ul>
-          <div class="cta cta-bottom">
-            <a href="https://www.instagram.com/" class="btn ghost" target="_blank" rel="noreferrer">
-              Auf Instagram ansehen
-            </a>
-          </div>
-        </article>
-      </div>
+      <nav id="nav" class="nav" aria-label="Hauptnavigation">
+        <a href="index.html">Startseite</a>
+        <a class="active" href="listings.html">Objekte</a>
+        <a href="preise.html">Preise</a>
+        <a href="ueber-mich.html">Über mich</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <section class="section">
-    <div class="container">
-      <h2>Dein Objekt als nächstes?</h2>
-      <p class="muted">Wenn du deine Immobilien mit hochwertigem Marketing professionell in Szene setzen willst, melde dich bei mir</p>
-      <div class="cta preise-cta" style="margin-top: 12px;">
-              <div class="cta preise-cta" style="margin-bottom: 24px;">
-        <a class="btn" href="kontakt.html">Kontaktiere mich jetzt!</a>
-        <a class="btn ghost" href="preise.html">Preise & Pakete</a>
+  <main>
+    <section class="section">
+      <div class="container">
+        <h2>Meine Immobilienfilme &amp; Projekte</h2>
+        <p class="muted">Filtere nach Status – gelistet oder bereits verkauft.</p>
+
+        <!-- Filter-Chips -->
+        <div class="filter-bar" style="margin-top: 20px;">
+          <button class="chip active" data-filter="alle">Alle</button>
+          <button class="chip" data-filter="gelistet">Gelistet</button>
+          <button class="chip" data-filter="verkauft">Verkauft</button>
+        </div>
+
+        <!-- Objekt-Cards -->
+        <div class="objects-grid">
+
+          <!-- Objekt 2 – Gelistet (Instagram Reel) -->
+          <article class="card object-card" data-status="gelistet">
+            <span class="badge">Gelistet</span>
+
+            <!-- Reel-Vorschau -->
+            <div class="reel-wrapper">
+              <a href="https://www.instagram.com/reel/DRowO3VjfU3/" target="_blank" rel="noopener noreferrer">
+                <img
+                  src="assets/reel-rheinfelden.png"
+                  alt="4,5-Zimmer-Maisonettewohnung in Rheinfelden (Baden)"
+                  class="reel-thumb"
+                />
+                <span class="reel-play">▶</span>
+              </a>
+            </div>
+
+            <h3>4,5-Zimmer-Maisonettewohnung in Rheinfelden (Baden)</h3>
+            <ul class="ticks">
+              <li>Social-Media-Format (9:16)</li>
+              <li>Ruhige Lage</li>
+              <li>Moderne Maisonette mit viel Licht und Raumgefühl</li>
+              <li>Standort: Rheinfelden (Baden)</li>
+            </ul>
+
+            <div class="cta cta-bottom">
+              <a
+                href="https://www.instagram.com/reel/DRowO3VjfU3/"
+                class="btn ghost"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Auf Instagram ansehen
+              </a>
+            </div>
+          </article>
+
+        </div>
       </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Dein Objekt als nächstes?</h2>
+        <p class="muted">
+          Wenn du deine Immobilien mit hochwertigem Marketing professionell in Szene setzen willst, melde dich bei mir.
+        </p>
+        <div class="cta preise-cta" style="margin-top: 36px; margin-bottom: 24px;">
+          <a class="btn" href="kontakt.html">Kontaktiere mich jetzt!</a>
+          <a class="btn ghost" href="preise.html">Preise &amp; Pakete</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Mind Frame Motions</p>
+      <p>
+        <a href="impressum.html">Impressum</a> ·
+        <a href="datenschutz.html">Datenschutz</a>
+      </p>
     </div>
-  </section>
-</main>
+  </footer>
 
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <p>© <span id="year"></span> Mind Frame Motions</p>
-    <p><a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
-  </div>
-</footer>
+  <script src="script.js" defer></script>
 
-<script src="script.js" defer></script>
+  <!-- Einfacher Status-Filter -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const chips = document.querySelectorAll(".chip");
+      const cards = document.querySelectorAll(".object-card");
+      let activeFilter = "alle";
 
-<!-- Interaktiver Mehrfach-Filter -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const chips = document.querySelectorAll(".chip");
-    const cards = document.querySelectorAll(".object-card");
-    let activeFilters = ["alle"]; // Start: "Alle" ist aktiv
-
-    function updateCards() {
-      // Wenn kein Filter oder "Alle" aktiv -> alles zeigen
-      if (activeFilters.length === 0 || activeFilters.includes("alle")) {
-        cards.forEach(card => card.style.display = "");
-        return;
+      function updateCards() {
+        cards.forEach((card) => {
+          const status = card.dataset.status;
+          card.style.display =
+            activeFilter === "alle" || !activeFilter || status === activeFilter
+              ? ""
+              : "none";
+        });
       }
 
-      // Sonst nach aktiven Filtern filtern
-      cards.forEach(card => {
-        const formats = card.dataset.format.split(" ");
-        const visible = activeFilters.some(f => formats.includes(f));
-        card.style.display = visible ? "" : "none";
-      });
-    }
-
-    chips.forEach(chip => {
-      chip.addEventListener("click", () => {
-        const filter = chip.dataset.filter;
-        const alleChip = document.querySelector('.chip[data-filter="alle"]');
-
-        // Sonderfall: "Alle"
-        if (filter === "alle") {
-          const isActive = chip.classList.contains("active");
-
-          if (isActive) {
-            // "Alle" deaktivieren -> keine Filter, aber alles anzeigen
-            chip.classList.remove("active");
-            activeFilters = [];
-          } else {
-            // "Alle" aktivieren -> alle anderen deaktivieren
-            chips.forEach(c => c.classList.toggle("active", c === chip));
-            activeFilters = ["alle"];
-          }
-
-          updateCards();
-          return;
-        }
-
-        // Klick auf einen anderen Filter:
-        const isActive = chip.classList.contains("active");
-
-        // Immer "Alle" deaktivieren, wenn ein anderer Filter benutzt wird
-        if (alleChip) {
-          alleChip.classList.remove("active");
-        }
-        activeFilters = activeFilters.filter(f => f !== "alle");
-
-        if (isActive) {
-          // Filter ausschalten
-          chip.classList.remove("active");
-          activeFilters = activeFilters.filter(f => f !== filter);
-        } else {
-          // Filter einschalten
+      chips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          const filter = chip.dataset.filter;
+          chips.forEach((c) => c.classList.remove("active"));
           chip.classList.add("active");
-
-          // Gegenseitiger Ausschluss: Gelistet vs Verkauft
-          if (filter === "gelistet" || filter === "verkauft") {
-            const other = filter === "gelistet" ? "verkauft" : "gelistet";
-            const otherChip = document.querySelector('.chip[data-filter="' + other + '"]');
-            if (otherChip) otherChip.classList.remove("active");
-            activeFilters = activeFilters.filter(f => f !== other);
-          }
-
-          // Gegenseitiger Ausschluss: Social Media vs Showcase
-          if (filter === "social" || filter === "showcase") {
-            const other = filter === "social" ? "showcase" : "social";
-            const otherChip = document.querySelector('.chip[data-filter="' + other + '"]');
-            if (otherChip) otherChip.classList.remove("active");
-            activeFilters = activeFilters.filter(f => f !== other);
-          }
-
-          activeFilters.push(filter);
-        }
-
-        updateCards();
+          activeFilter = filter;
+          updateCards();
+        });
       });
-    });
 
-    // Initialer Zustand
-    updateCards();
-  });
-</script>
+      updateCards();
+    });
+  </script>
 </body>
 </html>

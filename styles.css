@@ -1,38 +1,32 @@
-html,
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+/* ================================
+   Global Reset & Basics
+================================ */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-/* ----- Layout-Grundstruktur ----- */
-
+html,
 body {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  font-family: "Lexend", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
-    Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-
-  /* WICHTIG: statt background: nur background-color */
-  background-color: var(--bg);
-  color: var(--text);
-
-  background-image: url("assets/Hintergrund.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* ← entscheidend */
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-main {
-  flex: 1;
+/* Medien automatisch einpassen */
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* ----- Font ----- */
-
+/* Font */
 @font-face {
   font-family: "Lexend";
   src: url("assets/lexend/Lexend-VariableFont_wght.ttf") format("truetype");
@@ -40,8 +34,7 @@ main {
   font-style: normal;
 }
 
-/* ----- Theme-Variablen ----- */
-
+/* Theme-Variablen */
 :root {
   --bg: #ffffff;
   --bg-alt: #f7f7f8;
@@ -49,7 +42,7 @@ main {
   --muted: #2f2f32;
   --card: #ffffff;
   --border: #e6e6eb;
-  --brand: #d4a047; /* Gold */
+  --brand: #d4a047;          /* Gold */
   --brand-soft: rgba(212, 160, 71, 0.08);
   --brand-strong: #b38734;
 }
@@ -65,7 +58,38 @@ main {
   }
 }
 
-/* ----- Links ----- */
+/* Body / Hintergrund */
+
+body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-family: "Lexend", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  background-color: var(--bg);
+  color: var(--text);
+
+  background-image: url("assets/Hintergrund.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Hintergrund-Fix für Mobile (fixed ist dort oft buggy) */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+    background-size: cover;
+  }
+}
+
+main {
+  flex: 1;
+}
+
+/* Links */
 
 a {
   color: var(--brand);
@@ -76,7 +100,7 @@ a:hover {
   text-decoration: none;
 }
 
-/* ----- Container ----- */
+/* Container */
 
 .container {
   max-width: 1100px;
@@ -84,26 +108,26 @@ a:hover {
   padding: 0 20px;
 }
 
-/* ----- Header / Navigation ----- */
+/* ================================
+   Header / Navigation
+================================ */
 
 header {
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(6px);
-  border-bottom: none
+  border-bottom: none;
 }
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, 0.3); /* 20 % Deckkraft */
+  background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.8);
-  padding: 14px 14px 14px; 
+  padding: 14px 14px 14px;
 }
 
-
-/* Innerer Header-Container: Brand + Nav übereinander, zentriert */
 .header-inner {
   display: flex;
   flex-direction: column;
@@ -112,31 +136,35 @@ header {
   padding: 10px 16px;
 }
 
-/* Brand und Nav-Links: Grundstil */
+/* Brand + Nav-Links */
+
 .brand,
 .nav a {
   position: relative;
   display: inline-block;
-  color: var(--text);                      /* Standard schwarz */
+  color: var(--text);
   transition:
     color 0.25s ease,
-    letter-spacing 0.25s ease;
+    letter-spacing 0.25s ease,
+    opacity 0.25s ease;
   text-decoration: none;
 }
 
-/* Brand-Größe unabhängig von der Navigation */
+/* Brand-Größe unabhängig von Navigation */
+
 .brand {
-  font-size: 1.8rem;   /* oder 2rem, 2.2rem – wie du willst */
+  font-size: 1.8rem;
   font-weight: 550;
 }
 
-/* Goldene Unterlinie (unsichtbar am Anfang) */
+/* Goldene Unterlinie (nur für Nav, nicht Brand) */
+
 .brand::after,
 .nav a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: 5px;                           /* direkt unter Text */
+  bottom: 5px;
   width: 0%;
   height: 2px;
   background: var(--brand);
@@ -144,25 +172,25 @@ header {
   opacity: 0.9;
   border-radius: 999px;
 }
+
 .brand::after {
   content: none !important;
-  display: none !important;
 }
 
-/* Hover-Effekt: Gold + Letterspacing + Linie fährt aus */
+/* Hover-Effekt */
+
 .brand:hover,
 .nav a:hover {
   color: var(--brand-strong);
-  letter-spacing: 0.25px;                  /* edel & leicht */
+  letter-spacing: 0.25px;
 }
 
-/* Unterlinie animiert */
-.brand:hover::after,
 .nav a:hover::after {
   width: 100%;
 }
 
-/* Aktive Seite – normale Hervorhebung */
+/* Aktiver Link */
+
 .nav a.active {
   color: var(--brand);
   letter-spacing: 0.25px;
@@ -173,27 +201,16 @@ header {
   opacity: 0.9;
 }
 
-/* Sobald man über IRGENDEINEN anderen Link hovert */
+/* Wenn über Nav gehovert wird, aktiver Link leicht gedimmt */
+
 .nav:hover a.active:not(:hover) {
-  color: var(--brand);       /* sehr dezentes Gold */
+  color: var(--brand);
   letter-spacing: 0.25px;
   opacity: 0.6;
 }
 
-.nav:hover a.active:not(:hover)::after {
-  width: 100%;                     /* kürzerer Strich */
-  opacity: 0.9;
-}
+/* Nav-Layout */
 
-.nav a.active::after {
-  width: 100%; /* goldene Linie vollständig sichtbar */
-  opacity: 0.9;
-}
-
-
-}
-
-/* Navigation unter der Brand, zentriert */
 .nav {
   display: flex;
   gap: 16px;
@@ -203,10 +220,6 @@ header {
 }
 
 .nav a {
-    transition:
-    color 0.25s ease,
-    letter-spacing 0.25s ease,
-    opacity 0.25s ease;
   padding: 8px 10px;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -224,7 +237,6 @@ header {
   font-size: 1.2rem;
 }
 
-/* Mobile Layout */
 @media (max-width: 600px) {
   .header-inner {
     align-items: flex-start;
@@ -252,23 +264,18 @@ header {
   }
 }
 
-
-/* ----- Buttons ----- */
+/* ================================
+   Buttons
+================================ */
 
 .btn {
   display: inline-block;
-  background: var(--brand);
-  color: #001018;
+  background: rgba(212, 160, 71, 0.9);
+  color: #1a1a1a;
   padding: 10px 14px;
   border-radius: 10px;
   font-weight: 600;
-  border: 1px solid transparent;
-}
-
-.btn {
-  background: rgba(212, 160, 71, 0.9); /* dein Gold leicht transparent */
   border: 1px solid rgba(212, 160, 71, 0.3);
-  color: #1a1a1a;
   backdrop-filter: blur(6px);
   transition: all 0.25s ease;
 }
@@ -277,6 +284,7 @@ header {
   background: rgba(212, 160, 71, 0.6);
   border-color: rgba(212, 160, 71, 0.3);
   transform: translateY(-1px);
+  cursor: pointer;
 }
 
 .btn.ghost {
@@ -284,21 +292,26 @@ header {
   border: 1px solid rgba(255, 255, 255, 0.4);
   color: #1a1a1a;
   backdrop-filter: blur(6px);
-  transition: all 0.25s ease;
 }
 
 .btn.ghost:hover {
   background: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.3);
-  transform: translateY(-1px);
+  transform: translateY(-1.5px);
 }
 
+/* Kontakt-Button im Formular */
+
 #contact-form button.btn {
-  width: auto;                /* verhindert 100%-Breite */
-  display: inline-block;       /* damit er sich an Inhalt anpasst */
-  margin: 0 auto;              /* zentriert ihn */
-  padding: 10px 48px;          /* etwas breiter, aber nicht riesig */
+  width: auto;
+  display: inline-block;
+  margin: 0 auto;
+  padding: 10px 48px;
 }
+
+/* ================================
+   Typografie & Sections
+================================ */
 
 .muted {
   color: var(--muted);
@@ -312,7 +325,6 @@ h3 {
   letter-spacing: -0.25px;
 }
 
-
 h2 {
   font-size: 2rem;
 }
@@ -321,17 +333,47 @@ h2 {
   padding: 20px 0;
 }
 
-/* global zentriert für Sections (Inhalt) */
 .section .container {
   text-align: center;
 }
 
-/* ----- Hero ----- */
+/* ================================
+   Hero
+================================ */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-bottom: none;
+}
 
 .hero-full {
-  min-height: 20vh;          /* statt fast Vollbild */
+  min-height: 20vh;
   display: flex;
   align-items: center;
+}
+
+.hero-inner {
+  padding: 80px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-inner h1 {
+  max-width: 900px;
+  margin: 0 0 40px;
+  font-size: clamp(28px, 4vw, 34px);
+  line-height: 1.15;
+}
+
+.hero-inner p {
+  max-width: 720px;
+  margin: 0 0 40px;
+  color: var(--muted);
+  font-size: 1.2rem;
+  opacity: 0.9;
 }
 
 .hero-meta {
@@ -350,39 +392,24 @@ h2 {
   content: "• ";
 }
 
-.hero {
-  position: relative;
-  overflow: hidden;
-  border-bottom: none
+.hero-bg {
+  position: absolute;
+  inset: auto -20px 0 -20px;
+  height: 220px;
 }
 
-.hero-inner {
-  padding: 80px 20px 60px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+/* Speziell für Objekte-Hero */
 
+.hero-objekte {
+  padding-top: 8px;
+  padding-bottom: 0;
 }
 
-.hero-inner h1 {
-  max-width: 900px;
-  margin: 0 0 40px;                  /* vorher 16px */
-  font-size: clamp(28px, 4vw, 34px);
-  line-height: 1.15;
+.hero-objekte .hero-inner {
+  padding: 0;
 }
 
-.hero-inner p {
-  max-width: 720px;
-  margin: 0 0 40px;                  /* vorher 24px */
-  color: var(--muted);
-  font-size: 1.2rem;
-  opacity: 0.9;
-}
-
-.hero-meta {
-  margin: 28px 0 0;                  /* vorher 28px 0 0 */
-}
+/* CTA-Container */
 
 .cta {
   display: flex;
@@ -392,33 +419,9 @@ h2 {
   margin-top: 28px;
 }
 
-.hero-bg {
-  position: absolute;
-  inset: auto -20px 0 -20px;
-  height: 220px;
-}
-
-.hero-objekte .hero-inner {
-  padding-top: 0px;
-}
-
-
-/* ----- Benefits-Liste (Der erste Eindruck entscheidet) ----- */
-
-.benefits {
-  list-style-position: inside;
-  list-style-type: disc;
-  padding-left: 0;
-  margin: 16px auto 0;
-  max-width: 700px;
-  text-align: center;
-}
-
-.benefits li {
-  margin: 4px 0;
-}
-
-/* ----- Cards (Formate, Leistungen) ----- */
+/* ================================
+   Generic Cards
+================================ */
 
 .cards {
   display: grid;
@@ -430,7 +433,6 @@ h2 {
   margin-right: auto;
 }
 
-/* Jede Card: flex-column, damit wir Titel, Text und Preis sauber verteilen können */
 .card {
   padding: 32px 24px;
   border-radius: 14px;
@@ -442,11 +444,18 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  min-height: 230px;        /* gleiche Grundhöhe für alle Zusatzleistungen */
+  justify-content: space-between; /* NEU: verteilt Inhalt vertikal */
+  min-height: 260px;              /* etwas höher, damit alle Texte reinpassen */
 }
 
-/* Badge für Zusatzleistungen */
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Badge */
+
 .badge {
   display: inline-block;
   font-size: 0.7rem;
@@ -459,40 +468,21 @@ h2 {
   margin-bottom: 8px;
 }
 
-/* Preis immer unten auf derselben Höhe */
-.price-small {
-  margin-top: auto;   /* schiebt den Preis an das untere Ende der Card */
-  font-weight: 700;
-}
-
 .card h3 {
   margin-top: 0;
   margin-bottom: 10px;
 }
 
-/* Basis-Style für Text in Cards */
 .card p {
   margin: 0 0 8px;
 }
 
-/* Beschreibungstext: nimmt den Platz zwischen Titel und Preis ein
-   und wird darin vertikal zentriert */
-.card p:not(.price-small) {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.price-small {
+  margin-top: auto; 
+  font-weight: 700;
 }
 
-
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-}
-
-/* Responsive Grids */
+/* Responsive Card-Grid */
 
 @media (max-width: 900px) {
   .cards {
@@ -506,7 +496,9 @@ h2 {
   }
 }
 
-/* ----- Pricing-Grid (falls auf Preise-Seite) ----- */
+/* ================================
+   Pricing
+================================ */
 
 .pricing {
   display: grid;
@@ -519,7 +511,6 @@ h2 {
   margin-right: auto;
 }
 
-
 @media (max-width: 900px) {
   .pricing {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -532,8 +523,6 @@ h2 {
   }
 }
 
-/* ----- Preis-Karten ----- */
-
 .price-card {
   position: relative;
   padding: 40px 18px 22px;
@@ -545,24 +534,19 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  text-align: left;          /* Text linksbündig */
-  align-items: stretch;      /* volle Breite nutzen */
-}
-
-  display: flex;
-  flex-direction: column;
-  align-items: padding-left;
-  text-align: center;
+  text-align: left;
+  align-items: stretch;
 }
 
 .price-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
 }
 
 .price-card h2 {
   margin: 0;
   font-size: 1.1rem;
+  text-align: center;
 }
 
 .price {
@@ -570,6 +554,7 @@ h2 {
   font-weight: 700;
   color: #000;
   margin: 6px 0 4px;
+  text-align: center;
 }
 
 .price::after {
@@ -579,11 +564,10 @@ h2 {
   height: 2px;
   border-radius: 999px;
   background: var(--brand);
-  margin-top: 8px;
   margin: 8px auto 0;
 }
 
-/* Icon-Bullets in Preis-Karten */
+/* Preis-Features */
 
 .price-card ul {
   list-style: none;
@@ -592,77 +576,86 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  text-align: left;
 }
 
 .price-card ul li {
   display: flex;
-  align-items: center; /* vertikal zentriert */
+  align-items: center;
   gap: 8px;
-}
-
-.price-card h2,
-.price-card .price {
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-/* Listen und Textabsätze bleiben linksbündig */
-.price-card ul {
-  text-align: left;
-  list-style: none;
-  padding-left: 0;
-  margin-top: 10px;
-}
-
-.price-card ul li {
-  margin-bottom: 6px;
   line-height: 1.5;
 }
+
 .price-card ul li::before {
   content: "●";
   font-size: 0.6rem;
   color: var(--brand);
-  position: static; /* entfernt absolute Positionierung */
-  top: 0.5em; /* oder einfach top: 0; */
-  transform: none;
 }
-
-.price-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
-}
-
 
 /* Populäres Paket hervorheben */
 
 .price-card.popular {
-  background: linear-gradient(135deg, #fff8ea 0%, #f7ebcf 100%);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+  position: relative;
+  border-color: var(--brand);
+  background: linear-gradient(135deg, #fffaf0 0%, #f8efdc 100%);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
 }
 
-/* ----- Generisches Grid (Objekte-Seite) ----- */
+.price-card.popular::before {
+  content: "Bestes Engagement";
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #000;
+  font-weight: 600;
+}
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.price-card.popular:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* ================================
+   Objekte-Seite (Listings)
+================================ */
+
+/* Grid der Objekt-Cards */
+
+.objects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 16px;
+  margin-top: 24px;
 }
 
-@media (max-width: 900px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.object-card {
+  flex: 0 0 320px;
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 560px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .object-card {
+    flex: 0 0 100%;
   }
 }
 
-/* ----- Video-Wrapper (Showreel) ----- */
+.object-card .cta-bottom {
+  margin-top: auto;
+  padding-top: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Video-Wrapper (z.B. YouTube Showreel / 16:9) */
 
 .video-wrapper {
   position: relative;
@@ -683,12 +676,24 @@ h2 {
   border-radius: 12px;
 }
 
-.caption {
-  color: var(--muted);
-  margin-top: 8px;
+/* Instagram-Wrapper (Embed) */
+
+.ig-wrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+  margin-bottom: 8px;
 }
 
-/* ----- Ticks-Liste (falls benötigt) ----- */
+.ig-wrapper .instagram-media {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Ticks-Liste */
 
 .ticks {
   list-style: none;
@@ -712,65 +717,7 @@ h2 {
   color: var(--brand);
 }
 
-/* ----- Kontakt-Buttons zentrieren ----- */
-
-.contact-cta {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* ----- About-Bereich (Über mich Seite) ----- */
-
-.about {
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  gap: 50px;
-  align-items: start;
-  text-align: left;
-}
-
-.about-img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-@media (max-width: 680px) {
-  .about {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* ----- Footer ----- */
-
-.site-footer {
-  padding: 40px 0;
-  background: #fafafa;
-  border-top: 1px solid rgba(255, 255, 255, 0.8);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  border-bottom: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.3); /* gleiche Transparenz wie Header */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px); /* Safari-Support */
-}
-
-
-.footer-inner {
-  display: flex;
-  gap: 16px;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  color: var(--muted);
-}
+/* Filter-Chips */
 
 .chip {
   border-radius: 999px;
@@ -793,22 +740,85 @@ h2 {
   color: #000;
 }
 
-.hero-objekte {
-  padding-top: 8px;      /* statt 40px von .section */
-  padding-bottom: 0px;  /* kannst du nach Gefühl anpassen */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
-/* Innenraum im Hero verkleinern */
-.hero-objekte .hero-inner {
-  padding: 0px 0px 0px;  /* statt 80px 20px 60px */
+/* ================================
+   REELS (9:16 Preview mit Button-Hover)
+   – nur für listings.html relevant
+================================ */
+
+.reel-wrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 177%; /* 9:16 */
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #000;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-footer,
-.section,
-.section.alt,
-main {
-  background: transparent !important;
+/* Wrapper hebt sich beim Hover leicht an, Bild & Button bleiben optisch gleich */
+.reel-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
+
+/* Thumbnail bleibt unverändert, kein Zoom, kein Filter */
+.reel-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Play-Button zentriert, reagiert NUR auf Hover über den Button selbst */
+.reel-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #000;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  transition: all 0.35s ease;
+}
+
+/* Nur direkter Hover auf dem Play-Button löst Glow & Scale aus */
+.reel-play:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translate(-50%, -50%) scale(1.1);
+  box-shadow: 0 0 25px rgba(255, 215, 140, 0.9);
+  animation: reel-glow 1.8s ease-in-out infinite;
+}
+
+@keyframes reel-glow {
+  0%, 100% {
+    box-shadow: 0 0 25px rgba(255, 215, 140, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(255, 215, 140, 0.9);
+  }
+}
+
+/* ================================
+   Kontaktformular
+================================ */
 
 .contact-form {
   max-width: 520px;
@@ -836,7 +846,7 @@ main {
   border-radius: 8px;
   border: 1px solid var(--border);
   padding: 8px 10px;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .checkbox-row {
@@ -846,45 +856,12 @@ main {
 }
 
 .questionnaire {
-  margin-top: 12px;
-  padding: 14px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,0.06);
-}
-
-.form-row--privacy {
-  text-align: center;
-}
-
-.contact-form {
-  max-width: 520px;
-  margin: 0 auto;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.form-row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.checkbox-row {
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-}
-
-.questionnaire {
-  display: none;                 /* Start: versteckt */
+  display: none;
   margin-top: 10px;
   padding: 14px 14px 16px;
   border-radius: 12px;
   border: 1px solid var(--border);
-  background: rgba(255,255,255,0.06);
+  background: rgba(255, 255, 255, 0.06);
   gap: 10px;
 }
 
@@ -893,6 +870,9 @@ main {
   margin-bottom: 8px;
 }
 
+.form-row--privacy {
+  text-align: center;
+}
 
 .privacy-note {
   font-size: 0.85rem;
@@ -910,71 +890,69 @@ main {
   color: #000;
 }
 
-.btn:hover {
-  cursor: pointer;
-}
-
-.price-card.popular {
-  position: relative;
-  border-color: var(--brand);
-  background: linear-gradient(135deg, #fffaf0 0%, #f8efdc 100%);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.15);
-  transform: translateY(-3px);
-}
-
-.price-card.popular::before {
-  content: "Bestes Engagement";
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  font-size: 0.6rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 999px;
-  background: var(--brand);
-  color: #000;
-  font-weight: 600;
-}
-
-.price-card.popular:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); /* vorher 0.18 → mehr Kontrast */
-}
-
-.section.container {
-  text-align: center;
-}
-
-/* --- Filter-Abtrennung (vertikale Linie) --- */
-.filter-bar {
+.contact-cta {
   display: flex;
+  gap: 12px;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
-  position: relative;
 }
 
-.filter-bar .chip {
-  position: relative;
-  padding: 6px 14px;
-}
-.filter-bar .chip[data-filter="verkauft"] {
-  margin-right: 12px;
-}
+/* ================================
+   About (Über mich)
+================================ */
 
-/* Extra Abstand nach "Alle" und "Verkauft" – deine Gruppen */
-.filter-bar .chip[data-filter="alle"]::after,
-.filter-bar .chip[data-filter="verkauft"]::after {
-  width: 2px;            /* etwas kräftiger */
-  height: 40px;
-  opacity: 0.7;
+.about {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 50px;
+  align-items: start;
+  text-align: left;
 }
 
-/* Optional: mehr Luft rechts von "Alle" und "Verkauft" */
-.filter-bar .chip[data-filter="alle"],
-.filter-bar .chip[data-filter="verkauft"] {
-  margin-right: 10px;
+.about-img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
+@media (max-width: 680px) {
+  .about {
+    grid-template-columns: 1fr;
+  }
+}
 
+.about {
+  max-width: 1200px;
+}
+
+/* ================================
+   Footer
+================================ */
+
+.site-footer {
+  padding: 40px 0;
+  background: rgba(255, 255, 255, 0.85);
+  border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+
+/* Sections und Footer auf transparentem Body-Hintergrund */
+
+footer,
+.section,
+.section.alt,
+main {
+  background: transparent !important;
+}
