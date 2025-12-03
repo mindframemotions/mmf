@@ -69,4 +69,31 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+ // 🔹 Tooltip-Logik für "Korrekturschleife"-Fragezeichen
+  const tooltips = document.querySelectorAll(".info-tooltip");
+
+  if (tooltips.length > 0) {
+    // Beim Tippen/Klicken auf das ?-Icon: Tooltip toggeln
+    tooltips.forEach((tip) => {
+      tip.addEventListener("click", (event) => {
+        event.stopPropagation(); // verhindert, dass der Document-Handler direkt wieder schließt
+
+        const isOpen = tip.classList.contains("is-open");
+
+        // Erst alle schließen …
+        tooltips.forEach((t) => t.classList.remove("is-open"));
+
+        // … dann ggf. dieses öffnen
+        if (!isOpen) {
+          tip.classList.add("is-open");
+        }
+      });
+    });
+
+    // Beim Tippen/Klicken irgendwo anders: alle Tooltips schließen
+    document.addEventListener("click", () => {
+      tooltips.forEach((t) => t.classList.remove("is-open"));
+    });
+  }
 });
+

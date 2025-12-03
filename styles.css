@@ -734,9 +734,9 @@ h2 {
   border-color: #ffffff transparent transparent transparent;
 }
 
-/* Hover + Tastatur-Fokus aktivieren Tooltip */
+/* Desktop: Hover zeigt Tooltip weiterhin an */
 .info-tooltip:hover .info-tooltip-text,
-.info-tooltip:focus-within .info-tooltip-text {
+.info-tooltip.is-open .info-tooltip-text {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
