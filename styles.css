@@ -839,6 +839,8 @@ h2 {
 
 /* Filter-Chips */
 
+/* Filter-Chips */
+
 .chip {
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.6);
@@ -848,6 +850,12 @@ h2 {
   cursor: pointer;
   backdrop-filter: blur(6px);
   transition: all 0.2s ease;
+
+  /* 🔥 Fix: Textfarbe für Mobile-Browser erzwingen */
+  color: var(--muted);
+  -webkit-text-fill-color: var(--muted);
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .chip:hover {
@@ -858,7 +866,15 @@ h2 {
   background: var(--brand);
   border-color: var(--brand);
   color: #000;
+  -webkit-text-fill-color: #000;
 }
+
+/* Optional, für schöneren Fokusrahmen bei Tastaturbedienung */
+.chip:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(212, 160, 71, 0.25);
+}
+
 
 .filter-bar {
   display: flex;
