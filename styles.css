@@ -229,24 +229,78 @@ header {
 
 .menu-btn {
   display: none;
-  background: transparent;
-  border: 1px solid var(--border);
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid var(--border);
   color: var(--text);
-  padding: 8px 10px;
-  border-radius: 8px;
-  font-size: 1.2rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.1s ease,
+    border-color 0.2s ease;
 }
 
+/* kleines Hamburger-Icon links im Button */
+.menu-btn::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--text);
+  box-shadow:
+    0 -5px 0 var(--text),
+    0 5px 0 var(--text);
+}
+
+/* Hover / Active States */
+.menu-btn:hover {
+  background: #fff;
+  border-color: var(--brand, var(--border));
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.menu-btn:active {
+  transform: scale(0.97);
+     transform: translateY(50px);
+}
+
+/* wenn geöffnet (du setzt aria-expanded per JS) */
+.menu-btn[aria-expanded="true"] {
+  background: rgba(255, 255, 255, 1);
+  border-color: var(--brand, var(--border));
+}
+
+/* Mobile-Layout */
 @media (max-width: 600px) {
+  /* Header-Container: alles erstmal links ausrichten */
   .header-inner {
     align-items: flex-start;
+    width: 100%;
   }
 
+  /* Nur die Überschrift (Brand) zentrieren */
+  .brand {
+    align-self: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Menübutton für Mobile sichtbar machen */
   .menu-btn {
     display: inline-flex;
     align-self: flex-end;
+    transform: translateY(50px);
   }
 
+  /* Mobile-Navigation (Burger-Menü) */
   .nav {
     display: none;
     flex-direction: column;
@@ -263,6 +317,8 @@ header {
     width: 100%;
   }
 }
+
+
 
 /* ================================
    Buttons
@@ -621,6 +677,71 @@ h2 {
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
 }
 
+/* Korrekturschleife-Tooltip */
+
+.info-tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+  cursor: help;
+}
+
+.info-tooltip-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--brand);
+  font-size: 0.75rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-strong);
+  background: #fff;
+}
+
+.info-tooltip-text {
+  position: absolute;
+  left: 50%;
+  bottom: 135%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+  font-size: 0.8rem;
+  color: var(--muted);
+  width: min(260px, 70vw);
+  text-align: left;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 20;
+}
+
+/* kleiner Pfeil unterhalb der Box */
+.info-tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+/* Hover + Tastatur-Fokus aktivieren Tooltip */
+.info-tooltip:hover .info-tooltip-text,
+.info-tooltip:focus-within .info-tooltip-text {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+
 /* ================================
    Objekte-Seite (Listings)
 ================================ */
@@ -819,6 +940,10 @@ h2 {
    Kontaktformular
 ================================ */
 
+/* ================================
+   Kontaktformular – NEU
+================================ */
+
 .contact-form {
   max-width: 520px;
   margin: 0 auto;
@@ -834,44 +959,196 @@ h2 {
   gap: 4px;
 }
 
-.form-row label {
+.form-row label,
+.form-label {
   font-size: 0.9rem;
   font-weight: 500;
 }
 
 .form-row input,
-.form-row textarea,
-.form-row select {
+.form-row textarea {
   border-radius: 8px;
   border: 1px solid var(--border);
   padding: 8px 10px;
   background: rgba(255, 255, 255, 0.9);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
 }
 
+/* Fokus-Stile für Inputs/Textareas */
+.form-row input:focus,
+.form-row textarea:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(212, 160, 71, 0.18);
+  background-color: #fff;
+}
+
+/* Checkbox-Zeile */
 .checkbox-row {
   flex-direction: row;
   align-items: center;
   gap: 8px;
 }
 
+.checkbox-row input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+}
+
 .questionnaire {
-  display: none;
-  margin-top: 10px;
-  padding: 14px 14px 16px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.06);
-  gap: 10px;
+  margin-top: 16px;
+  padding: 0 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(-4px);
+  display: block;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    padding-top 0.35s ease,
+    padding-bottom 0.35s ease;
+}
+
+/* geöffneter Zustand */
+.questionnaire.is-open {
+  padding-top: 18px;
+  padding-bottom: 20px;
+  max-height: 2000px;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .questionnaire h2 {
-  font-size: 1rem;
-  margin-bottom: 8px;
+  font-size: 1.05rem;
+  margin: 0 0 6px;
 }
 
-.form-row--privacy {
-  text-align: center;
+.questionnaire .muted {
+  font-size: 0.86rem;
+  margin-bottom: 12px;
 }
+
+/* jede Frage bekommt mehr Luft + dezente Trennung */
+.questionnaire .form-row {
+  margin-top: 14px;
+  padding-top: 6px;
+}
+
+/* feine Linie zwischen den Fragen, außer der ersten */
+.questionnaire .form-row + .form-row {
+  border-top: 1.5px solid rgba(212, 160, 71, 0.25);
+}
+
+/* Labels in der Questionnaire etwas prominenter */
+.questionnaire .form-row label,
+.questionnaire .form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* ================================
+   Options-Chips statt Select
+================================ */
+
+.option-group {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.option-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+/* Nur etwas mehr Luft, aber kein eigener Hintergrund */
+.questionnaire .form-row:has(.option-group) .option-list {
+  margin-top: 8px;       /* etwas mehr Abstand nach oben */
+  padding: 0;            /* kein Innenabstand */
+  border-radius: 0;      /* keine extra „Karte“ */
+  background: transparent;
+}
+
+/* Radio verstecken, aber zugänglich lassen */
+.option-pill input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Sichtbarer Chip – Grundzustand */
+.option-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+  border: 1.5px solid rgba(212, 160, 71, 0.25);   /* goldene Umrandung */
+  background: rgba(255, 255, 255, 0.85);        /* helles Weiß */
+  color: var(--muted);                          /* dezenter Text */
+
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  backdrop-filter: blur(6px);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    color 0.2s ease;
+}
+
+.option-pill span {
+  white-space: nowrap;
+}
+
+/* Hover-Effekt – stärkerer Gold-Look */
+.option-pill:hover {
+  background: var(--brand-soft);                /* leicht goldiger Hintergrund */
+  border-color: var(--brand-strong);            /* etwas dunkleres Gold */
+  color: var(--text);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* Aktiver (ausgewählter) Zustand – noch deutlicher */
+.option-pill:has(input[type="radio"]:checked) {
+  background: var(--brand);                     /* voll Gold hinterlegt */
+  border-color: var(--brand-strong);
+  color: #000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+.option-pill input[type="radio"]:checked + span {
+  color: #000;
+  font-weight: 600;
+}
+
+/* Visually hidden Helper */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+
 
 .privacy-note {
   font-size: 0.85rem;
@@ -895,6 +1172,7 @@ h2 {
   flex-wrap: wrap;
   justify-content: center;
 }
+
 
 /* ================================
    About (Über mich)
@@ -938,6 +1216,14 @@ h2 {
   border-top: 1px solid var(--border);
 }
 
+.site-footer a {
+  color: var(--brand);
+  transition: color 0.2s ease;
+}
+
+.site-footer a:hover {
+  color: var(--brand-strong); /* dein dunkleres Gold */
+}
 .footer-inner {
   display: flex;
   gap: 16px;
@@ -955,3 +1241,144 @@ footer,
 main {
   background: transparent !important;
 }
+
+.site-header {
+  position: relative;
+}
+
+/* Social-Icons oben rechts im Header */
+.site-header .social-links {
+  position: absolute;
+  right: 36px;          /* Abstand zum rechten Rand */
+  top: 70%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* Basiszustand der Icons */
+.site-header .social-links .social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* nur für die Scale-Animation, kein Hintergrund, kein Schatten */
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Bild im Icon */
+.site-header .social-links .social-icon img {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+/* Hover: nur leichtes Vergrößern */
+.site-header .social-links .social-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Optional: auf sehr kleinen Screens nach unten packen */
+@media (max-width: 640px) {
+  .site-header .social-links {
+    position: static;
+    transform: none;
+    margin-top: 0.75rem;
+    justify-content: center;
+  }
+}
+
+/* ================================
+   FAQ – Accordion mit Animation
+================================ */
+
+.faq {
+  max-width: 600px;
+  margin: 20px auto 0;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Frage-Button */
+.faq-question {
+  width: 100%;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  padding: 12px 16px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.1s ease;
+}
+
+.faq-question:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  transition: transform .25s ease;
+  box-shadow: transform .25s ease;
+
+}
+
+/* Plus-/Minus-Icon */
+.faq-icon {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform 1.2s ease, opacity 0.2s ease;
+}
+
+/* Antwort-Ghostbox */
+.faq-answer {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  padding: 0 14px;
+  transition:
+    max-height 1.5s ease,
+    opacity .5s ease,
+    transform 1s ease,
+    padding-top 0.25s ease,
+    padding-bottom 0.25s ease;
+}
+
+.faq-answer > p {
+  margin: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: none;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Geöffnete Frage */
+.faq-item.is-open .faq-answer {
+  max-height: 300px; /* reicht locker für 2–3 Zeilen Text */
+  opacity: 1;
+  transform: translateY(0);
+  padding-top: 8px;
+  padding-bottom: 10px;
+}
+
+/* Icon rotiert zu "Minus" */
+.faq-item.is-open .faq-icon {
+  transform: rotate(45deg);
+  opacity: 0.9;
+}
+
+

@@ -22,6 +22,16 @@
         <a href="ueber-mich.html">Über mich</a>
         <a class="active" href="kontakt.html">Kontakt</a>
       </nav>
+
+                  <!-- Social-Buttons im Header oben rechts -->
+      <div class="social-links">
+        <a href="https://instagram.com/mindframemotions" target="_blank" rel="noopener" aria-label="Instagram" class="social-icon instagram">
+          <img src="assets/instagramicon.svg" alt="Instagram" />
+        </a>
+        <a href="https://www.tiktok.com/@mindframemotions" target="_blank" rel="noopener" aria-label="TikTok" class="social-icon tiktok">
+          <img src="assets/tiktokicon.svg" alt="TikTok" />
+        </a>
+      </div>
     </div>
   </header>
 
@@ -33,100 +43,236 @@
           Schick mir eine Anfrage – optional kannst du direkt ein paar Details zur Immobilie mit angeben.
         </p>
 
-        <form
-          class="contact-form"
-          id="contact-form"
-          action="https://formspree.io/f/mrbvpyzy"
-          method="POST"
-        >
-          <div class="form-row">
-            <label for="name">Name*</label>
-            <input type="text" id="name" name="name" required />
-          </div>
+       <form
+  class="contact-form"
+  id="contact-form"
+  action="https://formspree.io/f/mrbvpyzy"
+  method="POST"
+>
+  <!-- Basisdaten -->
+  <div class="form-row">
+    <label for="name">Name*</label>
+    <input type="text" id="name" name="name" required />
+  </div>
 
-          <div class="form-row">
-            <label for="email">E-Mail*</label>
-            <input type="email" id="email" name="email" required />
-          </div>
+  <div class="form-row">
+    <label for="email">E-Mail*</label>
+    <input type="email" id="email" name="email" required />
+  </div>
 
-          <div class="form-row">
-            <label for="message">Nachricht</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="4"
-              placeholder="Kurze Info zu deinem Anliegen…"
-            ></textarea>
-          </div>
+  <div class="form-row">
+    <label for="message">Nachricht</label>
+    <textarea
+      id="message"
+      name="message"
+      rows="4"
+      placeholder="Kurze Info zu deinem Anliegen…"
+    ></textarea>
+  </div>
 
-          <!-- Toggle für Fragebogen -->
-          <div class="form-row checkbox-row">
-            <label>
-              <input type="checkbox" id="toggle-details" />
-              Ich möchte direkt Details zur Immobilie angeben
-            </label>
-          </div>
+  <!-- Toggle für Fragebogen -->
+  <div class="form-row checkbox-row">
+    <label>
+      <input type="checkbox" id="toggle-details" />
+      Ich möchte direkt Details zur Immobilie angeben (optional)
+    </label>
+  </div>
 
-          <!-- Ausklappbarer Fragebogen -->
-          <div class="questionnaire" id="questionnaire">
-            <h2>Details zur Immobilie</h2>
+  <!-- Ausklappbarer Fragebogen -->
+  <div class="questionnaire" id="questionnaire">
+    <h2>Details zur Immobilie</h2>
+    <p class="muted" style="font-size: 0.85rem; margin-top: 0;">
+      Diese Punkte kannst du dir gerne schon vor unserem Beratungsgespräch überlegen
+      oder direkt hier ausfüllen – so können wir im Gespräch gleich über die wichtigsten
+      Details sprechen.
+    </p>
 
-            <div class="form-row">
-              <label for="standort">Standort der Immobilie*</label>
-              <input type="text" id="standort" name="Standort" />
-            </div>
+    <!-- 1. Ort / Standort -->
+    <div class="form-row">
+      <label for="standort">Ort / Standort des Objekts*</label>
+      <input
+        type="text"
+        id="standort"
+        name="Standort"
+        placeholder="z.B. Rheinfelden, Lörrach, Weil am Rhein"
+      />
+    </div>
 
-            <div class="form-row">
-              <label for="objekt-art">Art der Immobilie</label>
-              <select id="objekt-art" name="Objektart">
-                <option value="">Bitte auswählen…</option>
-                <option value="Wohnung">Wohnung</option>
-                <option value="Haus">Haus</option>
-                <option value="Gewerbe">Gewerbeobjekt</option>
-              </select>
-            </div>
+    <!-- 2. Art der Immobilie (statt select: Options-Chips) -->
+    <div class="form-row">
+      <span class="form-label">Art der Immobilie</span>
+      <fieldset class="option-group">
+        <legend class="visually-hidden">Art der Immobilie</legend>
+        <div class="option-list">
+          <label class="option-pill">
+            <input type="radio" name="Objektart" value="Wohnung" />
+            <span>Wohnung</span>
+          </label>
+          <label class="option-pill">
+            <input type="radio" name="Objektart" value="Haus" />
+            <span>Haus</span>
+          </label>
+          <label class="option-pill">
+            <input type="radio" name="Objektart" value="Mehrfamilienhaus" />
+            <span>Mehrfamilienhaus</span>
+          </label>
+          <label class="option-pill">
+            <input type="radio" name="Objektart" value="Gewerbe" />
+            <span>Gewerbeobjekt</span>
+          </label>
+          <label class="option-pill">
+            <input type="radio" name="Objektart" value="Sonstiges" />
+            <span>Sonstiges</span>
+          </label>
+        </div>
+      </fieldset>
+    </div>
 
-            <div class="form-row">
-              <label for="maklerrolle">Makler im Video?</label>
-              <select id="maklerrolle" name="Maklerrolle">
-                <option value="">Bitte auswählen…</option>
-                <option value="Noch unsicher">Noch unsicher</option>
-                <option value="Nein">Nein</option>
-                <option value="kurze Szene">Ja, kurze Szene im Video</option>
-                <option value="Sprechrolle">Ja, kurze Sprechrolle</option>
-              </select>
-            </div>
+    <!-- 3. Fläche -->
+    <div class="form-row">
+      <label for="flaeche">Wohn- / Nutzfläche (ca.)</label>
+      <input
+        type="text"
+        id="flaeche"
+        name="Flaeche"
+        placeholder="z.B. 95 m² Wohnfläche"
+      />
+    </div>
 
-            <div class="form-row">
-              <label for="besonderheiten">Highlights / Besonderheiten</label>
-              <textarea
-                id="besonderheiten"
-                name="Besonderheiten"
-                rows="3"
-                placeholder="z.B. Balkon mit Aussicht, neue Küche, Kamin…"
-              ></textarea>
-            </div>
-          </div> <!-- Fragebogen -->
+    <!-- 4. Zimmer -->
+    <div class="form-row">
+      <label for="zimmer">Anzahl Zimmer (ca.)</label>
+      <input
+        type="text"
+        id="zimmer"
+        name="Zimmer"
+        placeholder="z.B. 4,5 Zimmer"
+      />
+    </div>
 
-          <div class="form-row form-row--privacy">
-            <p class="privacy-note muted">
-              Deine Angaben werden ausschließlich zur Bearbeitung deiner Anfrage verwendet und nicht an Dritte
-              weitergegeben.
-            </p>
-          </div>
+    <!-- 5. Vermarktungsstatus (Chips statt Select) -->
+    <div class="form-row">
+      <span class="form-label">Vermarktungsstatus</span>
+      <fieldset class="option-group">
+        <legend class="visually-hidden">Vermarktungsstatus</legend>
+        <div class="option-list">
+          <label class="option-pill">
+            <input type="radio" name="Vermarktungsstatus" value="Noch nicht online" />
+            <span>Noch nicht online</span>
+          </label>
+          <label class="option-pill">
+            <input type="radio" name="Vermarktungsstatus" value="Bereits online" />
+            <span>Bereits online</span>
+          </label>
+          <label class="option-pill">
+            <input type="radio" name="Vermarktungsstatus" value="In Vorbereitung" />
+            <span>In Vorbereitung</span>
+          </label>
+        </div>
+      </fieldset>
+    </div>
 
-          <div class="form-row" style="text-align: center;">
-            <button
-              type="submit"
-              class="btn"
-              style="width: auto; font-size: .9rem; padding: 10px 30px; margin-bottom: -30px;"
-            >
-              Nachricht senden
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
+    <!-- 6. Zielgruppe -->
+    <div class="form-row">
+      <label for="zielgruppe">Zielgruppe</label>
+      <input
+        type="text"
+        id="zielgruppe"
+        name="Zielgruppe"
+        placeholder="z.B. junge Familien, Paare, Kapitalanleger…"
+      />
+    </div>
+
+    <!-- 8. Makler im Video (Chips) -->
+    <div class="form-row">
+      <span class="form-label">Makler im Video?</span>
+      <fieldset class="option-group">
+        <legend class="visually-hidden">Makler im Video</legend>
+        <div class="option-list">
+          <label class="option-pill">
+            <input type="radio" name="Maklerrolle" value="Noch unsicher" />
+            <span>Noch unsicher</span>
+          </label>
+          <label class="option-pill">
+            <input type="radio" name="Maklerrolle" value="Nein" />
+            <span>Nein</span>
+          </label>
+          <label class="option-pill">
+            <input type="radio" name="Maklerrolle" value="kurze Szene" />
+            <span>Ja, kurze Szene im Video</span>
+          </label>
+          <label class="option-pill">
+            <input type="radio" name="Maklerrolle" value="Sprechrolle" />
+            <span>Ja, kurze Sprechrolle / kurze Vorstellung</span>
+          </label>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- 9. Zeitraum -->
+    <div class="form-row">
+      <label for="zeitrahmen">Zeitrahmen / gewünschter Veröffentlichungszeitpunkt</label>
+      <input
+        type="text"
+        id="zeitrahmen"
+        name="Zeitrahmen"
+        placeholder="z.B. Video sollte in ca. 2 Wochen online sein"
+      />
+    </div>
+
+    <!-- Zugang zur Immobilie (Chips) -->
+    <div class="form-row">
+      <span class="form-label">Zugang zur Immobilie</span>
+      <fieldset class="option-group">
+        <legend class="visually-hidden">Zugang zur Immobilie</legend>
+        <div class="option-list">
+          <label class="option-pill">
+            <input type="radio" name="Zugang" value="Makler vor Ort" />
+            <span>Ich bin beim Dreh vor Ort</span>
+          </label>
+          <label class="option-pill">
+            <input type="radio" name="Zugang" value="Schlüsselbereitstellung" />
+            <span>Schlüssel wird bereitgestellt</span>
+          </label>
+          <label class="option-pill">
+            <input type="radio" name="Zugang" value="Leerstehend" />
+            <span>Immobilie ist leerstehend, Zugang nach Absprache</span>
+          </label>
+        </div>
+      </fieldset>
+    </div>
+
+    <!-- 10. Rechtliches & Freigaben -->
+    <div class="form-row">
+      <label for="rechtliches">Rechtliches / Freigaben</label>
+      <textarea
+        id="rechtliches"
+        name="Rechtliches"
+        rows="3"
+        placeholder="z.B. Eigentümer/Vermieter ist informiert; Außenaufnahmen erlaubt; bestimmte Räume bitte nicht filmen…"
+      ></textarea>
+    </div>
+
+    <!-- 11. Highlights / Besonderheiten -->
+    <div class="form-row">
+      <label for="besonderheiten">Highlights / Besonderheiten</label>
+      <textarea
+        id="besonderheiten"
+        name="Besonderheiten"
+        rows="3"
+        placeholder="z.B. Balkon mit Aussicht, hochwertige Küche, Kamin, besondere Architektur…"
+      ></textarea>
+    </div>
+  </div> <!-- /questionnaire -->
+
+  <!-- Absenden -->
+  <div class="form-row" style="margin-top: 12px;">
+    <button style="font-size: 0.85rem;" type="submit" class="btn">Nachricht senden</button>
+
+  </div>
+</form>
+
+
 
     <section class="section contact-info">
       <div class="container" style="text-align: center;">
