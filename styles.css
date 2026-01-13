@@ -772,7 +772,9 @@ h2 {
   margin-top: auto;
   padding-top: 16px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
 }
 
 /* Video-Wrapper (z.B. YouTube Showreel / 16:9) */
@@ -1396,5 +1398,17 @@ main {
   transform: rotate(45deg);
   opacity: 0.9;
 }
+
+@media (max-width: 560px) {
+  .card {
+    padding: 18px 16px;
+    min-height: unset;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
+
 
 
